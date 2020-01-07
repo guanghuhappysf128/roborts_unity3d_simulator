@@ -12,7 +12,6 @@ sysinfo.txt
 /Assets/AssetStoreTools*
 *.apk
 *.unitypackage
-/Assets/Urdf/*/Meshes/*
 
 
 # ===================================== #
@@ -32,5 +31,5 @@ sysinfo.txt
 .consulo/
 /*.tmp
 /*.svd
- 
+
 
