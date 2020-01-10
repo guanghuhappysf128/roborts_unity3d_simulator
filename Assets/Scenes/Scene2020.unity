@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 75875688}
   - component: {fileID: 75875687}
   m_Layer: 0
-  m_Name: base_link
+  m_Name: base_link_r4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 108359200}
   - component: {fileID: 108359199}
   m_Layer: 0
-  m_Name: base_link
+  m_Name: base_link_r1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsBaseLink: 0
+  IsBaseLink: 1
 --- !u!1 &161064833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1679,7 @@ GameObject:
   - component: {fileID: 297251593}
   - component: {fileID: 297251592}
   m_Layer: 0
-  m_Name: base_link
+  m_Name: base_link_r2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2107,6 +2107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412228691}
   - component: {fileID: 412228692}
+  - component: {fileID: 412228693}
   m_Layer: 0
   m_Name: ai_robot_b2
   m_TagString: Untagged
@@ -2121,14 +2122,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412228690}
-  m_LocalRotation: {x: -0.70710677, y: 0.000000029802326, z: 0.000000029802326, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000000029802326, y: -0.7071068, z: 0.000000044703487, w: 0.7071068}
+  m_LocalPosition: {x: 3.55, y: 0, z: 2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1939104951}
   - {fileID: 75875686}
-  m_Father: {fileID: 563789489}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 90.00001, z: -90.00001}
 --- !u!114 &412228692
 MonoBehaviour:
@@ -2143,6 +2144,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilePath: 
+--- !u!114 &412228693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412228690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Namespace: /r4
+  Topic: /cmd_vel
+  TimeStep: 0
+  rosConnector: {fileID: 1634601211}
+  linearVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: {x: 0, y: 0, z: 0}
+  SubscribedRigidbody: {fileID: 75875688}
+  m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &418836701
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,8 +2878,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 3.55, y: 0, z: 2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 412228691}
+  m_Children: []
   m_Father: {fileID: 1127607520}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
@@ -2950,8 +2970,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -3.55, y: 0, z: -2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1244980534}
+  m_Children: []
   m_Father: {fileID: 1127607520}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
@@ -3024,6 +3043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 587249700}
   - component: {fileID: 587249701}
+  - component: {fileID: 587249702}
   m_Layer: 0
   m_Name: ai_robot_b1
   m_TagString: Untagged
@@ -3038,14 +3058,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587249699}
-  m_LocalRotation: {x: -0.70710677, y: 0.000000029802326, z: 0.000000029802326, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000000029802326, y: -0.7071068, z: 0.000000044703487, w: 0.7071068}
+  m_LocalPosition: {x: 3.55, y: 0, z: -2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 79913050}
   - {fileID: 2057717318}
-  m_Father: {fileID: 1756817662}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 90.00001, z: -90.00001}
 --- !u!114 &587249701
 MonoBehaviour:
@@ -3060,6 +3080,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilePath: 
+--- !u!114 &587249702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587249699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Namespace: /r3
+  Topic: /cmd_vel
+  TimeStep: 0
+  rosConnector: {fileID: 1634601211}
+  linearVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: {x: 0, y: 0, z: 0}
+  SubscribedRigidbody: {fileID: 2057717320}
+  m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &609434299
 GameObject:
   m_ObjectHideFlags: 0
@@ -5888,6 +5928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1244980534}
   - component: {fileID: 1244980535}
+  - component: {fileID: 1244980536}
   m_Layer: 0
   m_Name: ai_robot_r2
   m_TagString: Untagged
@@ -5902,14 +5943,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244980533}
-  m_LocalRotation: {x: -0.70710677, y: 0.000000029802326, z: 0.000000029802326, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.000000029802326, y: 0.7071068, z: 0.000000044703487, w: 0.7071068}
+  m_LocalPosition: {x: -3.55, y: 0, z: -2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1003424136}
   - {fileID: 297251591}
-  m_Father: {fileID: 576945839}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: -90.00001, z: 90.00001}
 --- !u!114 &1244980535
 MonoBehaviour:
@@ -5924,6 +5965,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilePath: 
+--- !u!114 &1244980536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244980533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Namespace: /r2
+  Topic: /cmd_vel
+  TimeStep: 0
+  rosConnector: {fileID: 1634601211}
+  linearVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: {x: 0, y: 0, z: 0}
+  SubscribedRigidbody: {fileID: 297251593}
+  m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1266192118
 GameObject:
   m_ObjectHideFlags: 0
@@ -7645,6 +7706,53 @@ Transform:
   m_Father: {fileID: 539815253}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1634601210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1634601212}
+  - component: {fileID: 1634601211}
+  m_Layer: 0
+  m_Name: ROS_Connector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1634601211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634601210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff98778ae051cfd40a6e4effdf851ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecondsTimeout: 10
+  Serializer: 0
+  protocol: 0
+  RosBridgeServerUrl: ws://127.0.0.1:9090
+--- !u!4 &1634601212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634601210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5461749, y: 2.2033045, z: -0.3513953}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638057974
 GameObject:
   m_ObjectHideFlags: 0
@@ -8152,8 +8260,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 3.55, y: 0, z: -2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 587249700}
+  m_Children: []
   m_Father: {fileID: 1127607520}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
@@ -8525,8 +8632,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -3.55, y: 0, z: 2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1873338643}
+  m_Children: []
   m_Father: {fileID: 1127607520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
@@ -8847,6 +8953,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1873338643}
   - component: {fileID: 1873338644}
+  - component: {fileID: 1873338645}
   m_Layer: 0
   m_Name: ai_robot_r1
   m_TagString: Untagged
@@ -8861,14 +8968,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873338642}
-  m_LocalRotation: {x: -0.70710677, y: 0.000000029802326, z: 0.000000029802326, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.000000029802326, y: 0.7071068, z: 0.000000044703487, w: 0.7071068}
+  m_LocalPosition: {x: -3.55, y: 0, z: 2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2006547336}
   - {fileID: 108359198}
-  m_Father: {fileID: 1843063846}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: -90.00001, z: 90.00001}
 --- !u!114 &1873338644
 MonoBehaviour:
@@ -8883,6 +8990,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilePath: 
+--- !u!114 &1873338645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873338642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Namespace: /r1
+  Topic: /cmd_vel
+  TimeStep: 0
+  rosConnector: {fileID: 1634601211}
+  linearVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: {x: 0, y: 0, z: 0}
+  SubscribedRigidbody: {fileID: 108359200}
+  m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1880231155
 GameObject:
   m_ObjectHideFlags: 0
@@ -9800,7 +9927,7 @@ GameObject:
   - component: {fileID: 2057717320}
   - component: {fileID: 2057717319}
   m_Layer: 0
-  m_Name: base_link
+  m_Name: base_link_r3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
