@@ -1,48 +1,36 @@
-﻿/*
-© Siemens AG, 2017-2018
-Author: Dr. Martin Bischoff (martin.bischoff@siemens.com)
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-<http://www.apache.org/licenses/LICENSE-2.0>.
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-using System.Threading;
+﻿using System.Threading;
 using UnityEngine;
+using RosSharp.RosBridgeClient;
 
-namespace RosSharp.RosBridgeClient
+namespace Roborts
 {
-    // [RequireComponent(typeof(RosConnector))]
-    public abstract class RobortsSubscriber<T> : MonoBehaviour where T: Message
+    public abstract class RobortsSubscriber <T> : MonoBehaviour
+        where T : Message
     {
+        public RosConnector rosConnector;
         public string Namespace;
         public string Topic;
         public float TimeStep;
-        public RosConnector rosConnector;
-        private readonly int SecondsTimeout = 1;
+        private readonly int ConnectorTimeout = 1;
 
         protected virtual void Start()
         {
-            //rosConnector = GetComponent<RosConnector>();
             new Thread(Subscribe).Start();
         }
 
         private void Subscribe()
         {
-
-            if (!rosConnector.IsConnected.WaitOne(SecondsTimeout * 1000))
+            if (!rosConnector.IsConnected.WaitOne(ConnectorTimeout * 1000))
+            {
                 Debug.LogWarning("Failed to subscribe: RosConnector not connected");
+            }
 
-            rosConnector.RosSocket.Subscribe<T>(Namespace+Topic, ReceiveMessage, (int)(TimeStep * 1000)); // the rate(in ms in between messages) at which to throttle the topics
+            // 2nd param: the rate (in ms in between messages) at which
+            // to throttle the topics
+            rosConnector.RosSocket.Subscribe<T>(
+                Namespace + Topic, ReceiveMessage, (int) (TimeStep * 1000));
         }
 
         protected abstract void ReceiveMessage(T message);
-
     }
 }
