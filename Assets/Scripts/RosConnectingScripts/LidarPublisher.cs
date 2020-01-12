@@ -7,7 +7,11 @@ namespace Roborts
     {
         private static readonly Vector3 lidarOffset = new Vector3(0.18f, 0.0f, 0.0f);
 
-        public float lidarRange;
+        public float lidarMinRange;
+        public float lidarMaxRange;
+        public float angularResolutionDeg;
+        public float sampleFrequencyHz;
+        private float currentAngle = 0;
 
         public LidarPublisher()
         {
@@ -21,26 +25,49 @@ namespace Roborts
 
         private void Update()
         {
-            RaycastHit hitInfo;
-            bool hit = Physics.Raycast(
-                gameObject.transform.position + lidarOffset,
-                gameObject.transform.forward,
-                out hitInfo,
-                lidarRange);
+            // calculate the scan region
+            uint n_sample = (uint) Mathf.Ceil(sampleFrequencyHz * Time.deltaTime);
+            float minAngle = currentAngle;
+            float maxAngle = currentAngle + n_sample * angularResolutionDeg;
+            currentAngle = (maxAngle >= 360.0f) ? (maxAngle - 360.0f) : maxAngle;
 
-            if (hit)
+            // perform the scan
+            Vector3 lidarPos = gameObject.transform.position + lidarOffset;
+            float[] ranges = new float[n_sample];
+            for (uint i = 0; i < n_sample; i++)
             {
-                Debug.Log($"raycast from {gameObject.name} hit {hitInfo.collider.name} at {hitInfo.point}");
-                RosLaserScan msg = new RosLaserScan();
+                float angle = minAngle + i * angularResolutionDeg;
+                Quaternion rotation = Quaternion.Euler(0, angle, 0);
+                RaycastHit hitInfo;
 
-                // TODO: set other msg fields?
-                msg.header.seq = (uint) Time.frameCount; // TODO: is this correct?
-                msg.header.frame_id = "1"; // TODO: is this correct?
-                msg.range_max = lidarRange;
-                msg.ranges = new float[1] { hitInfo.distance };
+                bool hit = Physics.Raycast(
+                    lidarPos,
+                    rotation * gameObject.transform.forward,
+                    out hitInfo,
+                    lidarMaxRange);
 
-                Publish(msg);
+                if (hit && (hitInfo.distance >= lidarMinRange))
+                {
+                    ranges[i] = hitInfo.distance;
+                }
+                else
+                {
+                    ranges[i] = 0;
+                }
             }
+
+            // send msg to ROS
+            RosLaserScan msg = new RosLaserScan();
+            msg.header.seq = (uint) Time.frameCount; // TODO: is this correct?
+            msg.header.frame_id = "1"; // TODO: is this correct?
+            msg.angle_min = minAngle * Mathf.Deg2Rad;
+            msg.angle_max = maxAngle * Mathf.Deg2Rad;
+            msg.angle_increment = angularResolutionDeg * Mathf.Deg2Rad;
+            msg.scan_time = Time.deltaTime;
+            msg.range_min = lidarMinRange;
+            msg.range_max = lidarMaxRange;
+            msg.ranges = ranges;
+            Publish(msg);
         }
     }
 }
