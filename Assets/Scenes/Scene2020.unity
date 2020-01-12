@@ -2178,12 +2178,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r4
   topic: /scan
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
   sampleFrequencyHz: 16000
-  scanRateHz: 10
 --- !u!1 &418836701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3134,12 +3134,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r3
   topic: /scan
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
   sampleFrequencyHz: 16000
-  scanRateHz: 10
 --- !u!1 &609434299
 GameObject:
   m_ObjectHideFlags: 0
@@ -6039,12 +6039,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r2
   topic: /scan
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
   sampleFrequencyHz: 16000
-  scanRateHz: 10
 --- !u!1 &1266192118
 GameObject:
   m_ObjectHideFlags: 0
@@ -9084,12 +9084,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r1
   topic: /scan
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
   sampleFrequencyHz: 16000
-  scanRateHz: 10
 --- !u!1 &1880231155
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,12 +7,13 @@ namespace Roborts
         where T : Message
     {
         public RosConnector rosConnector;
+        public string nameSpace;
         public string topic;
         private string publicationId;
 
         protected virtual void Start()
         {
-            publicationId = rosConnector.RosSocket.Advertise<T>(topic);
+            publicationId = rosConnector.RosSocket.Advertise<T>(nameSpace + topic);
         }
 
         protected void Publish(T message)
