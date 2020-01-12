@@ -2108,6 +2108,7 @@ GameObject:
   - component: {fileID: 412228691}
   - component: {fileID: 412228692}
   - component: {fileID: 412228693}
+  - component: {fileID: 412228694}
   m_Layer: 0
   m_Name: ai_robot_b2
   m_TagString: Untagged
@@ -2156,14 +2157,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Namespace: /r4
-  Topic: /cmd_vel
-  TimeStep: 0
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r4
+  topic: /cmd_vel
+  timeStep: 0
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
-  SubscribedRigidbody: {fileID: 75875688}
+  subscribedRigidbody: {fileID: 75875688}
   m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &412228694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412228690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c4f1e88b72b4305a24d5facf53535c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  topic: /scan
+  lidarRange: 1
 --- !u!1 &418836701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3060,7 @@ GameObject:
   - component: {fileID: 587249700}
   - component: {fileID: 587249701}
   - component: {fileID: 587249702}
+  - component: {fileID: 587249703}
   m_Layer: 0
   m_Name: ai_robot_b1
   m_TagString: Untagged
@@ -3092,14 +3109,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Namespace: /r3
-  Topic: /cmd_vel
-  TimeStep: 0
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r3
+  topic: /cmd_vel
+  timeStep: 0
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
-  SubscribedRigidbody: {fileID: 2057717320}
+  subscribedRigidbody: {fileID: 2057717320}
   m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &587249703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587249699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c4f1e88b72b4305a24d5facf53535c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  topic: /scan
+  lidarRange: 1
 --- !u!1 &609434299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3340,7 +3372,7 @@ GameObject:
   - component: {fileID: 661873042}
   - component: {fileID: 661873043}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: upper_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4169,7 +4201,7 @@ GameObject:
   - component: {fileID: 873841769}
   - component: {fileID: 873841770}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: upper_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5564,7 +5596,7 @@ GameObject:
   - component: {fileID: 1158205561}
   - component: {fileID: 1158205562}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: lower_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5929,6 +5961,7 @@ GameObject:
   - component: {fileID: 1244980534}
   - component: {fileID: 1244980535}
   - component: {fileID: 1244980536}
+  - component: {fileID: 1244980537}
   m_Layer: 0
   m_Name: ai_robot_r2
   m_TagString: Untagged
@@ -5977,14 +6010,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Namespace: /r2
-  Topic: /cmd_vel
-  TimeStep: 0
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r2
+  topic: /cmd_vel
+  timeStep: 0
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
-  SubscribedRigidbody: {fileID: 297251593}
+  subscribedRigidbody: {fileID: 297251593}
   m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &1244980537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244980533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c4f1e88b72b4305a24d5facf53535c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  topic: /scan
+  lidarRange: 1
 --- !u!1 &1266192118
 GameObject:
   m_ObjectHideFlags: 0
@@ -6629,7 +6677,7 @@ GameObject:
   - component: {fileID: 1351771414}
   - component: {fileID: 1351771415}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: upper_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7808,7 +7856,7 @@ GameObject:
   - component: {fileID: 1641804650}
   - component: {fileID: 1641804651}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: upper_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8197,7 +8245,7 @@ GameObject:
   - component: {fileID: 1721085695}
   - component: {fileID: 1721085696}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: lower_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8954,6 +9002,7 @@ GameObject:
   - component: {fileID: 1873338643}
   - component: {fileID: 1873338644}
   - component: {fileID: 1873338645}
+  - component: {fileID: 1873338646}
   m_Layer: 0
   m_Name: ai_robot_r1
   m_TagString: Untagged
@@ -9002,14 +9051,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824f7570f7d3925f6a1858521edce69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Namespace: /r1
-  Topic: /cmd_vel
-  TimeStep: 0
   rosConnector: {fileID: 1634601211}
+  nameSpace: /r1
+  topic: /cmd_vel
+  timeStep: 0
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
-  SubscribedRigidbody: {fileID: 108359200}
+  subscribedRigidbody: {fileID: 108359200}
   m_EulerAngleVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &1873338646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873338642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c4f1e88b72b4305a24d5facf53535c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  topic: /scan
+  lidarRange: 1
 --- !u!1 &1880231155
 GameObject:
   m_ObjectHideFlags: 0
@@ -9475,7 +9539,7 @@ GameObject:
   - component: {fileID: 1967861172}
   - component: {fileID: 1967861173}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: lower_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9880,7 +9944,7 @@ GameObject:
   - component: {fileID: 2030194331}
   - component: {fileID: 2030194332}
   m_Layer: 0
-  m_Name: unnamed
+  m_Name: lower_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
