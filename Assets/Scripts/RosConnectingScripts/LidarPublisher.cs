@@ -5,6 +5,8 @@ namespace Roborts
 {
     public sealed class LidarPublisher : RobortsPublisher<RosLaserScan>
     {
+        private static readonly Vector3 lidarOffset = new Vector3(0.18f, 0.0f, 0.0f);
+
         public float lidarRange;
 
         public LidarPublisher()
@@ -19,16 +21,16 @@ namespace Roborts
 
         private void Update()
         {
-            // TODO: ignore lower_box?
             RaycastHit hitInfo;
             bool hit = Physics.Raycast(
-                gameObject.transform.position,
+                gameObject.transform.position + lidarOffset,
                 gameObject.transform.forward,
                 out hitInfo,
                 lidarRange);
 
             if (hit)
             {
+                Debug.Log($"raycast from {gameObject.name} hit {hitInfo.collider.name} at {hitInfo.point}");
                 RosLaserScan msg = new RosLaserScan();
 
                 // TODO: set other msg fields?
