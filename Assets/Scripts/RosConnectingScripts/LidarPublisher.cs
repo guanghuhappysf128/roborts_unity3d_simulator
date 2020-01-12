@@ -59,7 +59,7 @@ namespace Roborts
             // send msg to ROS
             RosLaserScan msg = new RosLaserScan();
             msg.header.seq = (uint) Time.frameCount; // TODO: is this correct?
-            msg.header.frame_id = "1"; // TODO: is this correct?
+            msg.header.frame_id = "scan";
             msg.angle_min = minAngle * Mathf.Deg2Rad;
             msg.angle_max = maxAngle * Mathf.Deg2Rad;
             msg.angle_increment = angularResolutionDeg * Mathf.Deg2Rad;
