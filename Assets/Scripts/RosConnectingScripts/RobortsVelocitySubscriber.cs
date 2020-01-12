@@ -1,20 +1,21 @@
 using UnityEngine;
 using RosSharp;
+using RosTwist = RosSharp.RosBridgeClient.MessageTypes.Geometry.Twist;
+using RosVector3 = RosSharp.RosBridgeClient.MessageTypes.Geometry.Vector3;
 
 namespace Roborts
 {
-    public class RobortsVelocitySubscriber :
-        RobortsSubscriber<RosSharp.RosBridgeClient.MessageTypes.Geometry.Twist>
+    public sealed class RobortsVelocitySubscriber : RobortsSubscriber<RosTwist>
     {
         public Vector3 linearVelocity;
         public Vector3 angularVelocity;
-        public Rigidbody SubscribedRigidbody;
+        public Rigidbody subscribedRigidbody;
         public Vector3 m_EulerAngleVelocity;
         private bool messageReceived;
 
         public RobortsVelocitySubscriber()
         {
-            Topic = "/cmd_vel";
+            topic = "/cmd_vel";
         }
 
         protected override void Start()
@@ -22,20 +23,20 @@ namespace Roborts
             base.Start();
         }
 
-        protected override void ReceiveMessage(RosSharp.RosBridgeClient.MessageTypes.Geometry.Twist message)
+        protected override void ReceiveMessage(RosTwist message)
         {
             Debug.Log("Message received");
-            linearVelocity = linearVelocityToVector3(message.linear).Ros2Unity();
-            angularVelocity = angularVelocityToVector3(message.angular).Ros2Unity();
+            linearVelocity = LinearVelocityToVector3(message.linear).Ros2Unity();
+            angularVelocity = AngularVelocityToVector3(message.angular).Ros2Unity();
             messageReceived = true;
         }
 
-        private static Vector3 linearVelocityToVector3(RosSharp.RosBridgeClient.MessageTypes.Geometry.Vector3 geometryVector3)
+        private static Vector3 LinearVelocityToVector3(RosVector3 geometryVector3)
         {
             return new Vector3((float) geometryVector3.y, (float) -geometryVector3.x, 0);
         }
 
-        private static Vector3 angularVelocityToVector3(RosSharp.RosBridgeClient.MessageTypes.Geometry.Vector3 geometryVector3)
+        private static Vector3 AngularVelocityToVector3(RosVector3 geometryVector3)
         {
             return new Vector3(0, 0, (float) -geometryVector3.z);
         }
@@ -50,8 +51,8 @@ namespace Roborts
 
         private void ProcessMessage()
         {
-            SubscribedRigidbody.velocity = linearVelocity;
-            SubscribedRigidbody.angularVelocity = angularVelocity;
+            subscribedRigidbody.velocity = linearVelocity;
+            subscribedRigidbody.angularVelocity = angularVelocity;
             messageReceived = false;
         }
     }

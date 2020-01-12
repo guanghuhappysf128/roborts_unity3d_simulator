@@ -4,14 +4,15 @@ using RosSharp.RosBridgeClient;
 
 namespace Roborts
 {
-    public abstract class RobortsSubscriber <T> : MonoBehaviour
+    public abstract class RobortsSubscriber<T> : MonoBehaviour
         where T : Message
     {
+        private static readonly int ConnectorTimeout = 1;
+
         public RosConnector rosConnector;
-        public string Namespace;
-        public string Topic;
-        public float TimeStep;
-        private readonly int ConnectorTimeout = 1;
+        public string nameSpace;
+        public string topic;
+        public float timeStep;
 
         protected virtual void Start()
         {
@@ -28,7 +29,7 @@ namespace Roborts
             // 2nd param: the rate (in ms in between messages) at which
             // to throttle the topics
             rosConnector.RosSocket.Subscribe<T>(
-                Namespace + Topic, ReceiveMessage, (int) (TimeStep * 1000));
+                nameSpace + topic, ReceiveMessage, (int) (timeStep * 1000));
         }
 
         protected abstract void ReceiveMessage(T message);
