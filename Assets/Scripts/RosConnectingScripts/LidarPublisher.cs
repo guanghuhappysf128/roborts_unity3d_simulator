@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 using RosLaserScan = RosSharp.RosBridgeClient.MessageTypes.Sensor.LaserScan;
 
 namespace Roborts
@@ -11,7 +12,13 @@ namespace Roborts
         public float lidarMaxRange;
         public float angularResolutionDeg;
         public float sampleFrequencyHz;
-        private float currentAngle = 0;
+
+        private uint samplePerMsg;
+        private float[] samples;
+        private uint numSample;
+        private RosLaserScan msg;
+        private uint msgSeq;
+
 
         public LidarPublisher()
         {
@@ -21,22 +28,26 @@ namespace Roborts
         protected override void Start()
         {
             base.Start();
+
+            // initialization has to be done here because values
+            // set in the unity editor aren't visible in the constructor
+            samplePerMsg = (uint) Mathf.Ceil(360.0f / angularResolutionDeg);
+            samples = new float[samplePerMsg];
+            numSample = 0;
+            msgSeq = 0;
+            InitializeMessage();
         }
 
         private void Update()
         {
-            // calculate the scan region
-            uint n_sample = (uint) Mathf.Ceil(sampleFrequencyHz * Time.deltaTime);
-            float minAngle = currentAngle;
-            float maxAngle = currentAngle + n_sample * angularResolutionDeg;
-            currentAngle = (maxAngle >= 360.0f) ? (maxAngle - 360.0f) : maxAngle;
+            // # of samples to collect at this frame
+            uint n = (uint) Mathf.Ceil(sampleFrequencyHz * Time.deltaTime);
 
-            // perform the scan
+            // collect samples
             Vector3 lidarPos = gameObject.transform.position + lidarOffset;
-            float[] ranges = new float[n_sample];
-            for (uint i = 0; i < n_sample; i++)
+            for (uint i = 0; i < n; i++)
             {
-                float angle = minAngle + i * angularResolutionDeg;
+                float angle = numSample * angularResolutionDeg;
                 Quaternion rotation = Quaternion.Euler(0, angle, 0);
                 RaycastHit hitInfo;
 
@@ -48,26 +59,48 @@ namespace Roborts
 
                 if (hit && (hitInfo.distance >= lidarMinRange))
                 {
-                    ranges[i] = hitInfo.distance;
+                    samples[numSample] = hitInfo.distance;
                 }
                 else
                 {
-                    ranges[i] = 0;
+                    samples[numSample] = 0;
+                }
+                numSample += 1;
+
+                // send msg if there are enough samples
+                if (numSample == samplePerMsg)
+                {
+                    SendMessage();
                 }
             }
+        }
 
-            // send msg to ROS
-            RosLaserScan msg = new RosLaserScan();
-            msg.header.seq = (uint) Time.frameCount; // TODO: is this correct?
+        private void InitializeMessage()
+        {
+            msg = new RosLaserScan();
+
+            msg.header.seq = msgSeq;
             msg.header.frame_id = "scan";
-            msg.angle_min = minAngle * Mathf.Deg2Rad;
-            msg.angle_max = maxAngle * Mathf.Deg2Rad;
+            msg.angle_min = 0;
+            msg.angle_max = (360.0f - angularResolutionDeg) * Mathf.Deg2Rad;
             msg.angle_increment = angularResolutionDeg * Mathf.Deg2Rad;
-            msg.scan_time = Time.deltaTime;
+            msg.scan_time = samplePerMsg / sampleFrequencyHz;
             msg.range_min = lidarMinRange;
             msg.range_max = lidarMaxRange;
-            msg.ranges = ranges;
-            Publish(msg);
+            msg.ranges = samples;
+
+            msgSeq += 1;
+        }
+
+        private void SendMessage()
+        {
+            // publish on a separate thread to avoid blocking
+            ThreadPool.QueueUserWorkItem((msg) => this.Publish((RosLaserScan)msg), msg);
+
+            // reset state
+            samples = new float[samplePerMsg];
+            numSample = 0;
+            InitializeMessage();
         }
     }
 }
