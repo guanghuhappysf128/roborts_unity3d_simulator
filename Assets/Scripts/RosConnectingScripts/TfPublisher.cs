@@ -34,19 +34,19 @@ namespace Roborts
         {
             RosOdometry msg = new RosOdometry();
 
-            msg.header.frame_id = "odom";
+            msg.header.frame_id = "base_link";
             msg.header.seq = msgSeq;
-            msg.child_frame_id = "base_link";
+            msg.child_frame_id = "odom";
             msg.pose.pose.position = GetRobotPositionRos();
             msg.pose.pose.orientation = GetRobotOrientationRos();
-            msg.pose.covariance = null; // TODO: replace this
+            // msg.pose.covariance = null; // TODO: replace this
             msg.twist.twist.linear = GetRobotLinearVelocity();
             msg.twist.twist.angular = GetRobotAngularVelocity();
-            msg.twist.covariance = null; // TODO: replace this
+            // msg.twist.covariance = null; // TODO: replace this
             msgSeq += 1;
 
             // publish on a separate thread to avoid blocking
-            ThreadPool.QueueUserWorkItem((msg) => this.Publish((RosOdometry) msg), msg);
+            ThreadPool.QueueUserWorkItem((m) => this.Publish((RosOdometry) m), msg);
         }
 
         private RosPoint GetRobotPositionRos()
