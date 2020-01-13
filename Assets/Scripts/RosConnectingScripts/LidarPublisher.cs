@@ -8,6 +8,7 @@ namespace Roborts
     {
         private static readonly Vector3 lidarOffset = new Vector3(0.18f, 0.0f, 0.0f);
 
+        public GameObject robot;
         public float lidarMinRange;
         public float lidarMaxRange;
         public float angularResolutionDeg;
@@ -44,7 +45,7 @@ namespace Roborts
             uint n = (uint) Mathf.Ceil(sampleFrequencyHz * Time.deltaTime);
 
             // collect samples
-            Vector3 lidarPos = gameObject.transform.position + lidarOffset;
+            Vector3 lidarPos = robot.transform.position + lidarOffset;
             for (uint i = 0; i < n; i++)
             {
                 float angle = numSample * angularResolutionDeg;
@@ -53,7 +54,7 @@ namespace Roborts
 
                 bool hit = Physics.Raycast(
                     lidarPos,
-                    rotation * gameObject.transform.forward,
+                    rotation * robot.transform.forward,
                     out hitInfo,
                     lidarMaxRange);
 
@@ -95,7 +96,7 @@ namespace Roborts
         private void SendMessage()
         {
             // publish on a separate thread to avoid blocking
-            ThreadPool.QueueUserWorkItem((msg) => this.Publish((RosLaserScan)msg), msg);
+            ThreadPool.QueueUserWorkItem((msg) => this.Publish((RosLaserScan) msg), msg);
 
             // reset state
             samples = new float[samplePerMsg];

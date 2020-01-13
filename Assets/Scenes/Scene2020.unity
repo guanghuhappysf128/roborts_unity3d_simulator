@@ -2180,6 +2180,7 @@ MonoBehaviour:
   rosConnector: {fileID: 1634601211}
   nameSpace: /r4
   topic: /scan
+  robot: {fileID: 75875685}
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
@@ -3136,6 +3137,7 @@ MonoBehaviour:
   rosConnector: {fileID: 1634601211}
   nameSpace: /r3
   topic: /scan
+  robot: {fileID: 2057717317}
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
@@ -6041,6 +6043,7 @@ MonoBehaviour:
   rosConnector: {fileID: 1634601211}
   nameSpace: /r2
   topic: /scan
+  robot: {fileID: 297251590}
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
@@ -9086,6 +9089,7 @@ MonoBehaviour:
   rosConnector: {fileID: 1634601211}
   nameSpace: /r1
   topic: /scan
+  robot: {fileID: 108359197}
   lidarMinRange: 0.2
   lidarMaxRange: 25
   angularResolutionDeg: 0.225
