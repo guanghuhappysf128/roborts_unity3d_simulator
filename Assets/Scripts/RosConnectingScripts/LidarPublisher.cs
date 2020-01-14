@@ -81,6 +81,7 @@ namespace Roborts
             msg = new RosLaserScan();
 
             msg.header.seq = msgSeq;
+            msg.header.stamp = Clock.Now().clock;
             msg.header.frame_id = "scan";
             msg.angle_min = 0;
             msg.angle_max = (360.0f - angularResolutionDeg) * Mathf.Deg2Rad;

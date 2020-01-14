@@ -35,8 +35,9 @@ namespace Roborts
             RosTfMessage msg = new RosTfMessage();
 
             msg.transforms = new RosTransformStamped[1] { new RosTransformStamped() };
-            msg.transforms[0].header.frame_id = "/odom";
             msg.transforms[0].header.seq = msgSeq;
+            msg.transforms[0].header.stamp = Clock.Now().clock;
+            msg.transforms[0].header.frame_id = "/odom";
             msg.transforms[0].child_frame_id = "/base_link";
             msg.transforms[0].transform.translation = GetRobotPositionRos();
             msg.transforms[0].transform.rotation = GetRobotOrientationRos();

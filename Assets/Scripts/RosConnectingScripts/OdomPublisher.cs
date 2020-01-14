@@ -34,8 +34,9 @@ namespace Roborts
         {
             RosOdometry msg = new RosOdometry();
 
-            msg.header.frame_id = "odom";
             msg.header.seq = msgSeq;
+            msg.header.stamp = Clock.Now().clock;
+            msg.header.frame_id = "odom";
             msg.child_frame_id = "base_link";
             msg.pose.pose.position = GetRobotPositionRos();
             msg.pose.pose.orientation = GetRobotOrientationRos();

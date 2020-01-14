@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Newtonsoft.Json;
 using RosMessage = RosSharp.RosBridgeClient.Message;
 using RosTime = RosSharp.RosBridgeClient.MessageTypes.Std.Time;
@@ -7,10 +8,23 @@ namespace Roborts
 {
     public sealed class Clock : RosMessage
     {
+        private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+
         [JsonIgnore]
         public const string RosMessageName = "rosgraph_msgs/Clock";
 
         public RosTime clock;
+
+        public static Clock Now()
+        {
+            Clock clock = new Clock();
+
+            long elapsed = DateTime.Now.Ticks - Epoch.Ticks;
+            clock.clock.secs = (uint) (elapsed / 10000000);
+            clock.clock.nsecs = (uint) (elapsed % 10000000);
+
+            return clock;
+        }
 
         public Clock()
         {
@@ -33,7 +47,7 @@ namespace Roborts
 
         private void Update()
         {
-            ThreadPool.QueueUserWorkItem((m) => this.Publish((Clock) m), new Clock());
+            ThreadPool.QueueUserWorkItem((m) => this.Publish((Clock) m), Clock.Now());
         }
     }
 }
