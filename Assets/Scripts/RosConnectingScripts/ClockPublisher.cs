@@ -23,6 +23,10 @@ namespace Roborts
             clock.clock.secs = (uint) (elapsed / 10000000);
             clock.clock.nsecs = (uint) (elapsed % 10000000);
 
+            // avoid jitters
+            clock.clock.nsecs /= 1000000;
+            clock.clock.nsecs *= 1000000;
+
             return clock;
         }
 
