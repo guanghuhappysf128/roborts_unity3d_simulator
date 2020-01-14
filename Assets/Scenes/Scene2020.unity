@@ -2111,6 +2111,7 @@ GameObject:
   - component: {fileID: 412228694}
   - component: {fileID: 412228695}
   - component: {fileID: 412228696}
+  - component: {fileID: 412228697}
   m_Layer: 0
   m_Name: ai_robot_b2
   m_TagString: Untagged
@@ -2219,6 +2220,21 @@ MonoBehaviour:
   nameSpace: /r4
   topic: /odom
   robot: {fileID: 75875685}
+--- !u!114 &412228697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412228690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158b816cdd4224603b54772d8b02e440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  nameSpace: /r4
+  topic: /clock
 --- !u!1 &418836701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3102,6 +3118,7 @@ GameObject:
   - component: {fileID: 587249703}
   - component: {fileID: 587249704}
   - component: {fileID: 587249705}
+  - component: {fileID: 587249706}
   m_Layer: 0
   m_Name: ai_robot_b1
   m_TagString: Untagged
@@ -3210,6 +3227,21 @@ MonoBehaviour:
   nameSpace: /r3
   topic: /odom
   robot: {fileID: 2057717317}
+--- !u!114 &587249706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587249699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158b816cdd4224603b54772d8b02e440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  nameSpace: /r3
+  topic: /clock
 --- !u!1 &609434299
 GameObject:
   m_ObjectHideFlags: 0
@@ -6042,6 +6074,7 @@ GameObject:
   - component: {fileID: 1244980537}
   - component: {fileID: 1244980538}
   - component: {fileID: 1244980539}
+  - component: {fileID: 1244980540}
   m_Layer: 0
   m_Name: ai_robot_r2
   m_TagString: Untagged
@@ -6150,6 +6183,21 @@ MonoBehaviour:
   nameSpace: /r2
   topic: /odom
   robot: {fileID: 297251590}
+--- !u!114 &1244980540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244980533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158b816cdd4224603b54772d8b02e440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  nameSpace: /r2
+  topic: /clock
 --- !u!1 &1266192118
 GameObject:
   m_ObjectHideFlags: 0
@@ -9122,6 +9170,7 @@ GameObject:
   - component: {fileID: 1873338646}
   - component: {fileID: 1873338647}
   - component: {fileID: 1873338648}
+  - component: {fileID: 1873338649}
   m_Layer: 0
   m_Name: ai_robot_r1
   m_TagString: Untagged
@@ -9230,6 +9279,21 @@ MonoBehaviour:
   nameSpace: /r1
   topic: /odom
   robot: {fileID: 108359197}
+--- !u!114 &1873338649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873338642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158b816cdd4224603b54772d8b02e440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosConnector: {fileID: 1634601211}
+  nameSpace: /r1
+  topic: /clock
 --- !u!1 &1880231155
 GameObject:
   m_ObjectHideFlags: 0
